@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const argv = require('yargs').argv;
 const app = express();
 const addUser = require('./route/user/adduser');
 const deleteUser = require('./route/user/deleteuser');
@@ -26,6 +27,9 @@ mongoose.connect(db, {
 })
 .catch((err) => {
     console.log(err.message);
+});
+app.get('/', (req, res) => {
+    res.send('Welcome');
 })
 app.post('/login', (req, res) => {
     login(req, res);
@@ -46,6 +50,7 @@ app.post('/deleteentry', (req, res) => {
 app.post('/deleteUser', (req, res) => {
     deleteUser(req, res);
 });
-app.listen('3001','100.69.99.10', () => {
-    console.log('Listening');
+const pt = argv.port || 3001;
+app.listen( pt, () => {
+    console.log("Listening at "+pt+"!!");
 });
