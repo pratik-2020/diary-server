@@ -7,6 +7,7 @@ const login = (req, res) => {
     userModel.find({
         username: username
     }).then((response) => {
+        console.log(username+' '+pass)
         if(response.length > 0){
             if(response[0].password === pass){
                 res.send('User may proceed');

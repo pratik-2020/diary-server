@@ -5,13 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server --port $PORT"
+    "start": "node server --port $PORT",
+    "serve": "nodemon server.js"
   },
   "author": "Pratik Rajesh Singh Thakur",
   "license": "ISC",
   "dependencies": {
+    "cloudinary": "^1.30.0",
     "cors": "^2.8.5",
     "express": "^4.18.1",
+    "express-fileupload": "^1.4.0",
     "mongodb": "^4.7.0",
     "mongoose": "^6.3.6",
     "nodemon": "^2.0.16",

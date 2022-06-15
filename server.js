@@ -8,8 +8,15 @@ const deleteUser = require('./route/user/deleteuser');
 const login = require('./route/user/login');
 const addEntry = require('./route/entry/add-entry');
 const deleteEntry = require('./route/entry/delete-entry');
+const addpdfuser = require('./route/PdfUser/addpdfuser');
+const addpdffile = require('./route/PdfFile/addpdf');
 const retrieveEntries = require('./route/entry/retrieve-entry');
+const fileUpload = require('express-fileupload');
+const retpdf = require('./route/PdfFile/retivepdf');
 app.use(express.json());
+app.use(fileUpload({
+    useTempFiles: true
+}));
 app.use(cors({
     origin: '*',
   
@@ -50,6 +57,15 @@ app.post('/deleteentry', (req, res) => {
 app.post('/deleteUser', (req, res) => {
     deleteUser(req, res);
 });
+app.post('/addpdfuser', (req, res) => {
+    addpdfuser(req, res);
+})
+app.post('/addpdffile', (req, res) => {
+    addpdffile(req, res);
+});
+app.post('/retpdf', (req, res) => {
+    retpdf(req, res);
+})
 const pt = argv.port || 3001;
 app.listen( pt, () => {
     console.log("Listening at "+pt+"!!");
