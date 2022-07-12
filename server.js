@@ -37,6 +37,9 @@ mongoose.connect(db, {
 });
 app.get('/', (req, res) => {
     res.send('Welcome');
+});
+app.post('/wel', (req, res) => {
+    res.send(req.body.name);
 })
 app.post('/login', (req, res) => {
     login(req, res);
